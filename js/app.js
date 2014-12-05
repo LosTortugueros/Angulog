@@ -22,7 +22,7 @@
 
         $scope.datasetClicks = [];
 
-        $http.get('http://0.0.0.0:3000/david/click').success(function(data, status, headers, config){
+        $http.get('http://0.0.0.0:3000/click').success(function(data, status, headers, config){
 
             $scope.datasetClicks = data;
 
@@ -46,9 +46,12 @@
             }
         };
 
+
+
+
         $scope.datasetKeys = [];
 
-        $http.get('http://0.0.0.0:3000/david/click').success(function(data, status, headers, config){
+        $http.get('http://0.0.0.0:3000/toutch').success(function(data, status, headers, config){
 
             $scope.datasetKeys = data;
 
@@ -62,9 +65,9 @@
         };
         $scope.optionsKeys = {
             rows: [{
-                key: 'click',
+                key: 'toutch',
                 type: 'bar',
-                name: 'Nombre de clicks',
+                name: 'Nombre de touches tapées',
                 color: '#42a5f5'
             }],
             xAxis: {
@@ -98,6 +101,131 @@
             drawDots: true,
             columnsHGap: 5
         }*/
+
+    }]);
+
+    app.controller("BSController", ["$scope","$http",function($scope,$http){
+
+        $scope.datasetDistance = [];
+
+        $http.get('http://0.0.0.0:3000/distance').success(function(data, status, headers, config){
+
+            $scope.datasetDistance = data;
+
+        });
+
+        $scope.schemaDistance = {
+            pseudo: {
+                type: 'string',
+                name: 'Personne'
+            }
+        };
+        $scope.optionsDistance = {
+            rows: [{
+                key: 'distance',
+                type: 'bar',
+                name: 'Nombre de métres parcourue',
+                color: '#42a5f5'
+            }],
+            xAxis: {
+                key: 'pseudo'
+            }
+        };
+
+        $scope.datasetCLickLine = [];
+
+        $http.get('http://0.0.0.0:3000/clickTime').success(function(data, status, headers, config){
+
+            $scope.datasetClickLineJules = data;
+
+        });
+
+        $scope.schemaCLickLine = {
+            clicks: {
+                type: 'integer',
+                name: 'Time'
+            }
+        };
+
+        $scope.optionsCLickLine = {
+            rows: [{
+                key: 'jules',
+                type: 'line',
+                name: 'Nombre clicks effectués par jules',
+                color: '#42a5f5'
+            },
+                {
+                    key: 'hugo',
+                    type: 'line',
+                    name: 'Nombre clicks effectués par seb',
+                    color: '#42a5f5'
+                }],
+            xAxis: {
+                key: 'clicks'
+            }
+        };
+
+
+
+
+
+    }]);
+
+    app.controller("BNController",["$scope","$http",function($scope,$http){
+
+        $scope.datasetBoisson = [];
+
+        $http.get('http://0.0.0.0:3000/boisson').success(function(data, status, headers, config){
+
+            $scope.datasetBoisson = data;
+
+        });
+
+        $scope.schemaBoisson = {
+            boisson: {
+                type: 'string',
+                name: 'Type'
+            }
+        };
+        $scope.optionsBoisson = {
+            rows: [{
+                key: 'qte%',
+                type: 'bar',
+                name: 'Nombre de métres parcourue',
+                color: '#42a5f5'
+            }],
+            xAxis: {
+                key: 'boisson'
+            }
+        };
+
+        $scope.datasetNourriture = [];
+
+        $http.get('http://0.0.0.0:3000/nourriture').success(function(data, status, headers, config){
+
+            $scope.datasetNourriture = data;
+
+        });
+
+        $scope.schemaNourriture = {
+            nourriture: {
+                type: 'string',
+                name: 'Type'
+            }
+        };
+        $scope.optionsNourriture = {
+            rows: [{
+                key: 'qte%',
+                type: 'bar',
+                name: 'Nombre de métres parcourue',
+                color: '#42a5f5'
+            }],
+            xAxis: {
+                key: 'nourriture'
+            }
+        };
+
+
 
     }]);
 

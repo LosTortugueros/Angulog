@@ -27,10 +27,13 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" ng-class="{ active: containerCtrl.isTab(1) }">
-                        <a href="#" ng-click="containerCtrl.setTab(1)">PC Data</a>
+                        <a href="#" ng-click="containerCtrl.setTab(1)">Clicks effectués et nombre de touches du clavier</a>
                     </li>
                     <li role="presentation" ng-class="{ active: containerCtrl.isTab(2) }">
-                        <a href="#" ng-click="containerCtrl.setTab(2)">BS Data</a>
+                        <a href="#" ng-click="containerCtrl.setTab(2)">Distance parcourue avec la souris et nombre de clicks effectué en fonction du temps</a>
+                    </li>
+                    <li role="presentation" ng-class="{ active: containerCtrl.isTab(3) }">
+                        <a href="#" ng-click="containerCtrl.setTab(3)">Boisson et nourriture engloutie</a>
                     </li>
                 </ul>
             </nav>
@@ -56,8 +59,41 @@
 
         </div>
 
-        <div class="row" ng-show="containerCtrl.isTab(2)">
-            <h3>BS</h3>
+        <div class="row" ng-show="containerCtrl.isTab(2)" ng-controller = "BSController as bsCtrl">
+            <div class="col-md-6">
+                <angularchart
+                        dataset="datasetDistance"
+                        schema="schemaDistance"
+                        options="optionsDistance">
+                </angularchart>
+            </div>
+
+            <div class="col-md-40">
+                <angularchart
+                        dataset="datasetCLickLine"
+                        schema="schemaCLickLine"
+                        options="optionsCLickLine">
+                </angularchart>
+            </div>
+
+            <div class="row" ng-show="containerCtrl.isTab(3)" ng-controller = "BNController as bnCtrl">
+                <div class="col-md-6">
+                    <angularchart
+                            dataset="datasetBoisson"
+                            schema="schemaBoisson"
+                            options="optionsBoisson">
+                    </angularchart>
+                </div>
+
+                <div class="col-md-40">
+                    <angularchart
+                            dataset="datasetNourriture"
+                            schema="schemaNourriture"
+                            options="optionsNourriture">
+                    </angularchart>
+                </div>
+            </div>
+
         </div>
 
     </div> <!-- /container -->
